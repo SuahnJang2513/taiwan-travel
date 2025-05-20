@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>TAIWAN</title>
+    <style>
+        body {
+            margin: 0;
+            font-family:  'Arial', sans-serif;
+            background-image: url("imgs/wall.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+        }
+        header {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 48px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .nav-buttons, .day-buttons {
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffffffbb;
+            color: #000;
+        }
+        iframe {
+            display: block;
+            margin: 0 auto;
+            width: 80%;
+            height: 300px;
+            border: 2px solid #fff;
+        }
+        .schedule {
+            display: none;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            width: 80%;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.8);
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .schedule.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+        }
+
+        /* CD 회전 효과 */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<header>TaiWan</header>
+
+
+<div id="musicPlayer" style="text-align:center; margin: 40px 0;">
+    <div style="position: relative; display: inline-block;">
+        <img id="cd" src="imgs/cd.png" alt="CD" style="width: 150px; height: 150px; border-radius: 50%; animation: spin 4s linear infinite;">
+    </div>
+    <div style="margin-top: 10px;">
+        <button onclick="togglePlay()">⏯</button>
+    </div>
+    <audio id="bgm" loop>
+        <source src="audio/Lyrics Video BOL4 - Travel.mp3" type="audio/mpeg">
+        브라우저가 오디오 태그를 지원하지 않습니다.
+    </audio>
+</div>
+
+<!-- 네비게이션 -->
+<div class="nav-buttons">
+    <button onclick="loadFrame('Food')">Food</button>
+    <button onclick="loadFrame('Shopping')">Shopping List</button>
+    <button onclick="loadFrame('Tip')">Tip</button>
+</div>
+
+<iframe id="infoFrame" src=""></iframe>
+
+<div class="day-buttons">
+    <button onclick="showSchedule('day1')">Day 1</button>
+    <button onclick="showSchedule('day2')">Day 2</button>
+    <button onclick="showSchedule('day3')">Day 3</button>
+    <button onclick="showSchedule('day4')">Day 4</button>
+</div>
+
+<div id="day1" class="schedule">
+    <h2> Day1 Schedule</h2>
+    <table>
+         <tr>
+      <th>시간</th>
+      <th>일정</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>04:00</td>
+      <td>공항 출발</td>
+    </tr>
+    <tr>
+      <td>05:00 ~ 08:00</td>
+      <td>짐 붙이기, 보안 검색, 출국 수속 등</td>
+    </tr>
+    <tr>
+      <td>08:00</td>
+      <td>비행기 탑승</td>
+    </tr>
+    <tr>
+      <td>09:00 ~ 09:25</td>
+      <td>대만 도착</td>
+    </tr>
+    <tr>
+      <td>10:00</td>
+      <td>입국 수속 및 공항 이동</td>
+    </tr>
+    <tr>
+      <td>11:00</td>
+      <td>숙소 이동 및 체크인 (또는 짐 맡기기)</td>
+    </tr>
+    <tr>
+      <td>13:00</td>
+      <td>점심: 아종면선 (阿宗麵線)</td>
+    </tr>
+    <tr>
+      <td>14:00</td>
+      <td>시먼딩 거리 산책 & 쇼핑 (Red House Theater 포함)</td>
+    </tr>
+    <tr>
+      <td>16:00</td>
+      <td>디저트 타임: 三兄妹冰品 또는 仙草專賣店</td>
+    </tr>
+    <tr>
+      <td>17:00</td>
+      <td>용산사 방문 (龍山寺)</td>
+    </tr>
+    <tr>
+      <td>19:00</td>
+      <td>화시제 야시장 & 시먼딩 야시장 탐방</td>
+    </tr>
+    <tr>
+      <td>20:00 ~ 21:00</td>
+      <td>까르푸 탐방 (쇼핑, 간식, 기념품)</td>
+    </tr>
+    <tr>
+      <td>22:00</td>
+      <td>대만 나이트 (야경 감상 또는 휴식)</td>
+    </tr>
+    </table>
+</div>
+
+<div id="day2" class="schedule">
+    <h2>Day2 Schedule </h2>
+    <table>
+         <tr><th>시간</th><th>일정</th></tr>
+        <tr>
+      <td>00:00</td>
+      <td>푸데푸데 💤</td>
+    </tr>
+    <tr>
+      <td>01:00 ~ 07:00</td>
+      <td>숙면 / 자유 시간</td>
+    </tr>
+    <tr>
+      <td>08:00</td>
+      <td>자유여행 시작 – 발이 이끄는 대로 ☕️🌿</td>
+    </tr>
+    <tr>
+      <td>11:50</td>
+      <td>타이페이역 미팅</td>
+    </tr>
+    <tr>
+      <td>13:00</td>
+      <td>예류 지질공원 도착 – 여왕바위 등 감상</td>
+    </tr>
+    <tr>
+      <td>14:00</td>
+      <td>예류 출발</td>
+    </tr>
+    <tr>
+      <td>14:40 ~ 15:20</td>
+      <td>스펀 폭포 감상 (작지만 예쁜 폭포)</td>
+    </tr>
+    <tr>
+      <td>15:30 ~ 17:00</td>
+      <td>스펀 기찻길 + 천등 날리기 체험</td>
+    </tr>
+    <tr>
+      <td>17:40 ~ 19:40</td>
+      <td>지우펀 골목 산책, 야경 감상, 간식 탐방</td>
+    </tr>
+    <tr>
+      <td>20:20</td>
+      <td>라오허제 야시장 – 후추번, 꼬치, 디저트</td>
+    </tr>
+    <tr>
+      <td>22:00</td>
+      <td>까르푸 마지막 쇼핑 (기념품, 간식)</td>
+    </tr>
+    <tr>
+      <td>23:00</td>
+      <td>숙소 복귀 및 정리</td>
+    </tr>
+    </table>
+</div>
+
+<div id="day3" class="schedule">
+    <h2>Day 3 Schedule</h2>
+    <table>
+         <tr><th>시간</th><th>일정</th></tr>
+        <tr>
+      <td>00:00</td>
+      <td>드르렁 💤 (숙소에서 휴식)</td>
+    </tr>
+    <tr>
+      <td>01:00 ~ 07:00</td>
+      <td>취침 / 자유시간</td>
+    </tr>
+    <tr>
+      <td>08:00 ~ 09:00</td>
+      <td>여자가 되다(?) – 준비 시간, 변신 완료 💄👗</td>
+    </tr>
+    <tr>
+      <td>09:00</td>
+      <td>진펑 루러우판 (진짜 현지 스타일 밥집)</td>
+    </tr>
+    <tr>
+      <td>10:20 ~ 11:00</td>
+      <td>중정기념당 도착 – 위병 교대식 보기</td>
+    </tr>
+    <tr>
+      <td>11:30 ~ 13:00</td>
+      <td>융캉제 먹부림 – 딘타이펑, 망고빙수 등</td>
+    </tr>
+    <tr>
+      <td>13:00 ~ 14:30</td>
+      <td>단수이 홍마오청(紅毛城) 도착</td>
+    </tr>
+    <tr>
+      <td>14:30 ~ 16:00</td>
+      <td>단수이 올드스트리트 & 강변 산책</td>
+    </tr>
+    <tr>
+      <td>16:00 ~ 17:30</td>
+      <td>타이베이 101 도착 – 주변 자유시간, 쇼핑</td>
+    </tr>
+    <tr>
+      <td>17:30 ~ 19:00</td>
+      <td>자율 활동 – 카페, 쇼핑, 사진 등</td>
+    </tr>
+    <tr>
+      <td>19:00 ~ 22:00</td>
+      <td>스린 야시장 – 마지막 먹방, 간식 폭주</td>
+    </tr>
+    <tr>
+      <td>22:00</td>
+      <td>숙소 광란의 밤 🔥🎉 마지막 밤 만끽</td>
+    </tr>
+    </table>
+</div>
+
+<div id="day4" class="schedule">
+    <h2>Day 4 Schedule</h2>
+    <table>
+           <tr>
+      <th>시간</th>
+      <th>일정</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>00:00</td>
+      <td>드렁슨드렁슨 🍻😴 (밤샘 or 꿈나라)</td>
+    </tr>
+    <tr>
+      <td>01:00 ~ 06:00</td>
+      <td>취침 / 휴식 / 정리</td>
+    </tr>
+    <tr>
+      <td>07:00</td>
+      <td>공항 이동 – 체크아웃, 공항버스 or 택시</td>
+    </tr>
+    <tr>
+      <td>08:00 ~ 09:00</td>
+      <td>공항 도착 후 뭐든 하겠지 뭐... ☕️🍩</td>
+    </tr>
+    <tr>
+      <td>10:00</td>
+      <td>비행기 탑승 ✈️ </td>
+    </tr>
+    <tr>
+      <td>11:00 ~ 13:00</td>
+      <td>기내에서 여운에 젖기</td>
+    </tr>
+    <tr>
+      <td>14:00</td>
+      <td>난 다시... 여수행 🚌🌊</td>
+    </tr>
+    <tr>
+      <td>15:00 ~ 23:00</td>
+      <td>귀가 후 휴식 </td>
+    </tr>
+
+    </table>
+    <div class="footer">2025.05. TAIWAN © 2025</div>
+  </div>
+</div>
+
+<script>
+    function loadFrame(section) {
+        let lower = section.toLowerCase();
+        let frame = document.getElementById("infoFrame");
+
+        if (lower === 'food') {
+            frame.src = "https://kjd6145.tistory.com/entry/%EB%8C%80%EB%A7%8C-%ED%95%84%EC%88%98-%EB%A8%B9%EA%B1%B0%EB%A6%AC-%EC%9D%8C%EC%8B%9D-%E2%80%93-%ED%98%84%EC%A7%80%EC%9D%B8%EC%9D%B4-%EA%B0%95%EB%A0%A5-%EC%B6%94%EC%B2%9C%ED%95%98%EB%8A%94-%EB%A1%9C%EC%BB%AC-%EB%A7%9B%EC%A7%91-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%F0%9F%8D%9C";
+        } else if (lower === 'shopping') {
+            frame.src = "https://blog.naver.com/mi1891/223714003490";
+        } else if (lower === 'tip') {
+            frame.src = "https://blog.ddkoon.com/%ED%83%80%EC%9D%B4%EC%99%84-%ED%83%80%EC%9D%B4%EB%B2%A0%EC%9D%B4-%EC%97%AC%ED%96%89-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C-%ED%95%84%EC%88%98-%EC%A4%80%EB%B9%84%EB%AC%BC%EA%B3%BC-%EA%BF%80/";
+        }
+    }
+
+    function showSchedule(dayId) {
+        const selected = document.getElementById(dayId);
+        if (selected.classList.contains("show")) return;
+        const schedules = document.querySelectorAll(".schedule");
+        schedules.forEach(s => {
+            if (s.id !== dayId) {
+                s.classList.remove("show");
+                setTimeout(() => s.style.display = "none", 500);
+            }
+        });
+        selected.style.display = "block";
+        setTimeout(() => selected.classList.add("show"), 10);
+    }
+
+    function togglePlay() {
+        const audio = document.getElementById("bgm");
+        const cd = document.getElementById("cd");
+        if (audio.paused) {
+            audio.play();
+            cd.style.animationPlayState = "running";
+        } else {
+            audio.pause();
+            cd.style.animationPlayState = "paused";
+        }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const audio = document.getElementById("bgm");
+        const cd = document.getElementById("cd");
+        audio.play().then(() => {
+            cd.style.animationPlayState = "running";
+        }).catch(() => {
+            cd.style.animationPlayState = "paused";
+        });
+    });
+</script>
+
+</body>
+</html>
